@@ -1,0 +1,1 @@
+source $MACSTRAP_INSTALL/helpers/logging.sh

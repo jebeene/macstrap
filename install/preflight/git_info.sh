@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+MACSTRAP_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/macstrap"
+MACSTRAP_ENV_FILE="$MACSTRAP_CONFIG_DIR/env"
+mkdir -p "$MACSTRAP_CONFIG_DIR"
+
+[[ -f "$MACSTRAP_ENV_FILE" ]] && source "$MACSTRAP_ENV_FILE"
+
+read -rp "Git user.name [${MACSTRAP_GIT_NAME:-}]: " input_name
+read -rp "Git user.email [${MACSTRAP_GIT_EMAIL:-}]: " input_email
+
+MACSTRAP_GIT_NAME="${input_name:-$MACSTRAP_GIT_NAME}"
+MACSTRAP_GIT_EMAIL="${input_email:-$MACSTRAP_GIT_EMAIL}"
+
+cat > "$MACSTRAP_ENV_FILE" <<EOF
+MACSTRAP_GIT_NAME="${MACSTRAP_GIT_NAME}"
+MACSTRAP_GIT_EMAIL="${MACSTRAP_GIT_EMAIL}"
+EOF
+
+export MACSTRAP_GIT_NAME MACSTRAP_GIT_EMAIL
