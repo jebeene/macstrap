@@ -7,11 +7,8 @@ mkdir -p "$MACSTRAP_CONFIG_DIR"
 
 [[ -f "$MACSTRAP_ENV_FILE" ]] && source "$MACSTRAP_ENV_FILE"
 
-read -rp "Git user.name [${MACSTRAP_GIT_NAME:-}]: " input_name
-read -rp "Git user.email [${MACSTRAP_GIT_EMAIL:-}]: " input_email
-
-MACSTRAP_GIT_NAME="${input_name:-$MACSTRAP_GIT_NAME}"
-MACSTRAP_GIT_EMAIL="${input_email:-$MACSTRAP_GIT_EMAIL}"
+MACSTRAP_GIT_NAME=$(gum input --placeholder "Git user.name" --value "${MACSTRAP_GIT_NAME:-}")
+MACSTRAP_GIT_EMAIL=$(gum input --placeholder "Git user.email" --value "${MACSTRAP_GIT_EMAIL:-}")
 
 cat > "$MACSTRAP_ENV_FILE" <<EOF
 MACSTRAP_GIT_NAME="${MACSTRAP_GIT_NAME}"
