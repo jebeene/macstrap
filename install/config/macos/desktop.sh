@@ -1,0 +1,2 @@
+# Disable desktop icons
+defaults write com.apple.finder "CreateDesktop" -bool "false"

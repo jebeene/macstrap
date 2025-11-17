@@ -1,0 +1,1 @@
+run_logged $MACSTRAP_INSTALL/setup/nvim.sh
