@@ -16,7 +16,7 @@ start_log_output() {
 
     while true; do
       # Read the last N lines into an array
-      mapfile -t current_lines < <(tail -n $log_lines "$MACSTRAP_INSTALL_LOG_FILE" 2>/dev/null)
+      read_command_into_array current_lines tail -n $log_lines "$MACSTRAP_INSTALL_LOG_FILE" 2>/dev/null
 
       # Build complete output buffer with escape sequences
       output=""
