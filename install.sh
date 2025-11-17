@@ -6,7 +6,7 @@ set -eEo pipefail
 # Define Omarchy locations
 export MACSTRAP_PATH="${HOME}/.local/share/macstrap"
 export MACSTRAP_INSTALL="$MACSTRAP_PATH/install"
-export MACSTRAP_INSTALL_LOG_FILE="/var/log/macstrap-install.log"
+export MACSTRAP_INSTALL_LOG_FILE="$MACSTRAP_PATH/logs/macstrap-install.log"
 export PATH="$MACSTRAP_PATH/bin:$PATH"
 
 # Install
