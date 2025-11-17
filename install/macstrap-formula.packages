@@ -4,6 +4,7 @@ lazydocker
 lazygit
 luarocks
 neovim
+pipx
 starship
 tree-sitter-cli
 wget

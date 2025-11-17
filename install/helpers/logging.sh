@@ -53,12 +53,12 @@ stop_log_output() {
 }
 
 start_install_log() {
-  sudo touch "$MACSTRAP_INSTALL_LOG_FILE"
-  sudo chmod 666 "$MACSTRAP_INSTALL_LOG_FILE"
+  mkdir -p "$(dirname "$MACSTRAP_INSTALL_LOG_FILE")"
+  touch "$MACSTRAP_INSTALL_LOG_FILE"
+  chmod 666 "$MACSTRAP_INSTALL_LOG_FILE"
 
   export MACSTRAP_START_TIME=$(date '+%Y-%m-%d %H:%M:%S')
-
-  echo "=== Omarchy Installation Started: $MACSTRAP_START_TIME ===" >>"$MACSTRAP_INSTALL_LOG_FILE"
+  echo "=== Macstrap Installation Started: $MACSTRAP_START_TIME ===" >>"$MACSTRAP_INSTALL_LOG_FILE"
   start_log_output
 }
 
@@ -68,46 +68,21 @@ stop_install_log() {
 
   if [[ -n ${MACSTRAP_INSTALL_LOG_FILE:-} ]]; then
     MACSTRAP_END_TIME=$(date '+%Y-%m-%d %H:%M:%S')
-    echo "=== Omarchy Installation Completed: $MACSTRAP_END_TIME ===" >>"$MACSTRAP_INSTALL_LOG_FILE"
+    echo "=== Macstrap Installation Completed: $MACSTRAP_END_TIME ===" >>"$MACSTRAP_INSTALL_LOG_FILE"
     echo "" >>"$MACSTRAP_INSTALL_LOG_FILE"
     echo "=== Installation Time Summary ===" >>"$MACSTRAP_INSTALL_LOG_FILE"
 
-    if [ -f "/var/log/archinstall/install.log" ]; then
-      ARCHINSTALL_START=$(grep -m1 '^\[' /var/log/archinstall/install.log 2>/dev/null | sed 's/^\[\([^]]*\)\].*/\1/' || true)
-      ARCHINSTALL_END=$(grep 'Installation completed without any errors' /var/log/archinstall/install.log 2>/dev/null | sed 's/^\[\([^]]*\)\].*/\1/' || true)
-
-      if [ -n "$ARCHINSTALL_START" ] && [ -n "$ARCHINSTALL_END" ]; then
-        ARCH_START_EPOCH=$(date -d "$ARCHINSTALL_START" +%s)
-        ARCH_END_EPOCH=$(date -d "$ARCHINSTALL_END" +%s)
-        ARCH_DURATION=$((ARCH_END_EPOCH - ARCH_START_EPOCH))
-
-        ARCH_MINS=$((ARCH_DURATION / 60))
-        ARCH_SECS=$((ARCH_DURATION % 60))
-
-        echo "Archinstall: ${ARCH_MINS}m ${ARCH_SECS}s" >>"$MACSTRAP_INSTALL_LOG_FILE"
-      fi
-    fi
-
     if [ -n "$MACSTRAP_START_TIME" ]; then
-      MACSTRAP_START_EPOCH=$(date -d "$MACSTRAP_START_TIME" +%s)
-      MACSTRAP_END_EPOCH=$(date -d "$MACSTRAP_END_TIME" +%s)
+      MACSTRAP_START_EPOCH=$(date -j -f '%Y-%m-%d %H:%M:%S' "$MACSTRAP_START_TIME" +%s)
+      MACSTRAP_END_EPOCH=$(date -j -f '%Y-%m-%d %H:%M:%S' "$MACSTRAP_END_TIME" +%s)
       MACSTRAP_DURATION=$((MACSTRAP_END_EPOCH - MACSTRAP_START_EPOCH))
 
       MACSTRAP_MINS=$((MACSTRAP_DURATION / 60))
       MACSTRAP_SECS=$((MACSTRAP_DURATION % 60))
 
-      echo "Omarchy:     ${MACSTRAP_MINS}m ${MACSTRAP_SECS}s" >>"$MACSTRAP_INSTALL_LOG_FILE"
-
-      if [ -n "$ARCH_DURATION" ]; then
-        TOTAL_DURATION=$((ARCH_DURATION + MACSTRAP_DURATION))
-        TOTAL_MINS=$((TOTAL_DURATION / 60))
-        TOTAL_SECS=$((TOTAL_DURATION % 60))
-        echo "Total:       ${TOTAL_MINS}m ${TOTAL_SECS}s" >>"$MACSTRAP_INSTALL_LOG_FILE"
-      fi
+      echo "Macstrap:    ${MACSTRAP_MINS}m ${MACSTRAP_SECS}s" >>"$MACSTRAP_INSTALL_LOG_FILE"
     fi
     echo "=================================" >>"$MACSTRAP_INSTALL_LOG_FILE"
-
-    echo "Rebooting system..." >>"$MACSTRAP_INSTALL_LOG_FILE"
   fi
 }
 
