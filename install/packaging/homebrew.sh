@@ -9,5 +9,3 @@ brew update
 
 # upgrade homebrew
 brew upgrade
-
-# install all packages
