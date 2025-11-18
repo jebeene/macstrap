@@ -61,4 +61,3 @@ fi
 echo -e "\nInstallation starting..."
 # macstrap.sh is your main orchestrator (the thing that sources install/helpers/all.sh etc.)
 source ~/.local/share/macstrap/install.sh
-# source ~/macstrap/install.sh
