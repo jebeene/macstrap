@@ -15,8 +15,8 @@ start_log_output() {
     local max_line_width=$((LOGO_WIDTH - 4))
 
     while true; do
-      # Read the last N lines into an array
-      read_command_into_array current_lines tail -n $log_lines "$MACSTRAP_INSTALL_LOG_FILE" 2>/dev/null
+      # Read the last N lines into an array (using subshell-safe helper)
+      read_command_into_array_local current_lines tail -n $log_lines "$MACSTRAP_INSTALL_LOG_FILE" 2>/dev/null
 
       # Build complete output buffer with escape sequences
       output=""
