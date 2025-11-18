@@ -13,5 +13,5 @@ export PATH="$MACSTRAP_PATH/bin:$PATH"
 # Install
 source "$MACSTRAP_INSTALL/helpers/all.sh"
 source "$MACSTRAP_INSTALL/preflight/all.sh"
-# source "$MACSTRAP_INSTALL/packaging/all.sh"
-# source "$MACSTRAP_INSTALL/setup/all.sh"
+source "$MACSTRAP_INSTALL/packaging/all.sh"
+source "$MACSTRAP_INSTALL/setup/all.sh"
