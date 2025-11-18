@@ -10,27 +10,32 @@ start_log_output() {
   printf $ANSI_SAVE_CURSOR
   printf $ANSI_HIDE_CURSOR
 
+  # Capture parent PID so the child can detect when we're gone
+  local parent_pid=$$
+
   (
     local log_lines=20
     local max_line_width=$((LOGO_WIDTH - 4))
 
     while true; do
+      # If the parent is gone, exit the monitor
+      if ! kill -0 "$parent_pid" 2>/dev/null; then
+        exit 0
+      fi
+
       # Read the last N lines into an array (using subshell-safe helper)
       read_command_into_array_local current_lines tail -n $log_lines "$MACSTRAP_INSTALL_LOG_FILE" 2>/dev/null
 
-      # Build complete output buffer with escape sequences
       output=""
       for ((i = 0; i < log_lines; i++)); do
         line="${current_lines[i]:-}"
 
-        # Truncate if needed
         if [ ${#line} -gt $max_line_width ]; then
           line="${line:0:$max_line_width}..."
         fi
 
-        # Add clear line escape and formatted output for each line
         if [ -n "$line" ]; then
-          output+="${ANSI_CLEAR_LINE}${ANSI_GRAY}${PADDING_LEFT_SPACES}  → ${line}${ANSI_RESET}\n"
+          output+="${ANSI_CLEAR_LINE}${PADDING_LEFT_SPACES}  → ${line}${ANSI_RESET}\n"
         else
           output+="${ANSI_CLEAR_LINE}${PADDING_LEFT_SPACES}\n"
         fi
@@ -73,16 +78,19 @@ stop_install_log() {
     echo "=== Installation Time Summary ===" >>"$MACSTRAP_INSTALL_LOG_FILE"
 
     if [ -n "$MACSTRAP_START_TIME" ]; then
-      MACSTRAP_START_EPOCH=$(date -j -f '%Y-%m-%d %H:%M:%S' "$MACSTRAP_START_TIME" +%s)
-      MACSTRAP_END_EPOCH=$(date -j -f '%Y-%m-%d %H:%M:%S' "$MACSTRAP_END_TIME" +%s)
+      MACSTRAP_START_EPOCH=$(date -d "$MACSTRAP_START_TIME" +%s)
+      MACSTRAP_END_EPOCH=$(date -d "$MACSTRAP_END_TIME" +%s)
       MACSTRAP_DURATION=$((MACSTRAP_END_EPOCH - MACSTRAP_START_EPOCH))
 
       MACSTRAP_MINS=$((MACSTRAP_DURATION / 60))
       MACSTRAP_SECS=$((MACSTRAP_DURATION % 60))
 
-      echo "Macstrap:    ${MACSTRAP_MINS}m ${MACSTRAP_SECS}s" >>"$MACSTRAP_INSTALL_LOG_FILE"
+      echo "Macstrap:     ${MACSTRAP_MINS}m ${MACSTRAP_SECS}s" >>"$MACSTRAP_INSTALL_LOG_FILE"
+
     fi
     echo "=================================" >>"$MACSTRAP_INSTALL_LOG_FILE"
+
+    echo "Rebooting system..." >>"$MACSTRAP_INSTALL_LOG_FILE"
   fi
 }
 

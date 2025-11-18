@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 set -euo pipefail
 
 MACSTRAP_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/macstrap"
@@ -16,3 +15,6 @@ MACSTRAP_GIT_EMAIL="${MACSTRAP_GIT_EMAIL}"
 EOF
 
 export MACSTRAP_GIT_NAME MACSTRAP_GIT_EMAIL
+
+# Wait for user to confirm before proceeding
+gum confirm --padding "1 0 1 0" "Ready to install?" && echo
