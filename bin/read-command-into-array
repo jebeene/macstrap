@@ -1,0 +1,20 @@
+#!/bin/bash
+# read-command-into-array: macOS-compatible helper for reading command output into arrays
+# Usage: read-command-into-array array_name command [args...]
+
+set -euo pipefail
+
+array_name="$1"
+shift
+
+# Read command output into local array
+items=()
+while IFS= read -r line || [[ -n "$line" ]]; do
+  items+=("$line")
+done < <("$@")
+
+# Output in a format that can be sourced
+printf "%s=(" "$array_name"
+printf '%s\n' "${items[@]}" | sed 's/^/"/; s/$/"/'
+printf ")\n"
+
