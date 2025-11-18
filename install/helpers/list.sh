@@ -20,14 +20,17 @@ read_command_into_array() {
 
 # read_command_into_array_local <array_name> <command>
 # macOS-compatible version that works in subshells
-# Requires the variable to be created as local in the calling scope first
+# Directly populates array without eval for proper quoting
 read_command_into_array_local() {
   local array_name="$1"
   shift
-
-  # Read command output into local array (works in subshells)
-  eval "$array_name=()"
+  
+  # Build the array by reading lines
+  local -a temp_array
   while IFS= read -r line || [[ -n "$line" ]]; do
-    eval "$array_name+=(\"\$line\")"
+    temp_array+=("$line")
   done < <("$@")
+  
+  # Use eval to assign to the target variable name in caller scope
+  eval "$array_name=(\"\${temp_array[@]}\")"
 }
