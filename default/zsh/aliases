@@ -26,6 +26,9 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
+# Clear
+alias c='clear'
+
 # Tools
 alias d='docker'
 alias r='rails'
