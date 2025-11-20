@@ -1,0 +1,29 @@
+#!/bin/bash
+# Sync local macstrap development changes to installed location
+
+set -e
+
+PROJECT_DIR="/Users/jbeene/projects/macstrap"
+INSTALL_DIR="$HOME/.local/share/macstrap"
+
+echo "Syncing macstrap changes..."
+
+# Sync the entire repo (excluding .git)
+rsync -av --delete \
+  --exclude='.git' \
+  --exclude='*.log' \
+  --exclude='.DS_Store' \
+  "$PROJECT_DIR/" "$INSTALL_DIR/"
+
+echo "✓ Synced to $INSTALL_DIR"
+
+# Reload shell config if in zsh
+if [[ -n "$ZSH_VERSION" ]]; then
+  echo "Reloading zsh config..."
+  source ~/.zshrc
+  echo "✓ Reloaded shell config"
+fi
+
+echo ""
+echo "Changes applied! For nvim config changes, restart nvim or run :Lazy sync"
+
