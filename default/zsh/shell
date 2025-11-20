@@ -1,0 +1,13 @@
+# History control
+setopt APPEND_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+HISTSIZE=32768
+SAVEHIST="${HISTSIZE}"
+
+# Autocompletion
+autoload -Uz compinit
+compinit
+
+# Ensure command hashing is off for mise
+setopt NO_HASH_CMDS

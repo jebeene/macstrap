@@ -1,0 +1,7 @@
+source ~/.local/share/macstrap/default/zsh/shell
+source ~/.local/share/macstrap/default/zsh/aliases
+source ~/.local/share/macstrap/default/zsh/functions
+source ~/.local/share/macstrap/default/zsh/prompt
+source ~/.local/share/macstrap/default/zsh/init
+source ~/.local/share/macstrap/default/zsh/envs
+[[ -o interactive ]] && source ~/.local/share/macstrap/default/zsh/inputrc

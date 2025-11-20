@@ -1,10 +1,14 @@
 docker
+eza
 gum
+fzf
 lazydocker
 lazygit
 luarocks
+mise
 neovim
 pipx
 starship
 tree-sitter-cli
 wget
+zoxide

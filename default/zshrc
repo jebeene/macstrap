@@ -1,0 +1,8 @@
+# zshrc entry point for macstrap
+# This file sources the modular zsh configuration from ~/.local/share/macstrap/default/zsh/
+
+source ~/.local/share/macstrap/default/zsh/rc
+
+# User customizations can be added below this line
+# They will be preserved across macstrap updates
+
