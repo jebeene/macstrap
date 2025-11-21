@@ -9,7 +9,9 @@ lazygit
 luarocks
 mise
 neovim
+node
 pipx
+rbenv
 starship
 hashicorp/tap/terraform
 tree-sitter-cli
