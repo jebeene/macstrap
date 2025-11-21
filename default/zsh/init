@@ -19,3 +19,8 @@ if command -v fzf &> /dev/null; then
     source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
   fi
 fi
+
+# Conda initialization
+if [[ -f /opt/homebrew/anaconda3/etc/profile.d/conda.sh ]]; then
+  source /opt/homebrew/anaconda3/etc/profile.d/conda.sh
+fi

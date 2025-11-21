@@ -1,3 +1,4 @@
+awscli
 docker
 eza
 gum
@@ -10,6 +11,7 @@ mise
 neovim
 pipx
 starship
+hashicorp/tap/terraform
 tree-sitter-cli
 wget
 zoxide
