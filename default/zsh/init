@@ -14,8 +14,14 @@ if command -v rbenv &> /dev/null; then
   eval "$(rbenv init - zsh)"
 fi
 
+# TODO this slows down the shell startup time
+if [[ -s /opt/homebrew/opt/nvm/nvm.sh ]]; then
+  export NVM_DIR="$HOME/.nvm"
+  source /opt/homebrew/opt/nvm/nvm.sh
+  [[ -s /opt/homebrew/opt/nvm/etc/bash_completion.d/nvm ]] && source /opt/homebrew/opt/nvm/etc/bash_completion.d/nvm
+fi
+
 if command -v fzf &> /dev/null; then
-  # Try Homebrew paths (Apple Silicon)
   if [[ -f /opt/homebrew/opt/fzf/shell/completion.zsh ]]; then
     source /opt/homebrew/opt/fzf/shell/completion.zsh
   fi
