@@ -16,5 +16,6 @@ rbenv
 starship
 hashicorp/tap/terraform
 tree-sitter-cli
+uv
 wget
 zoxide
