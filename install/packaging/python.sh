@@ -5,3 +5,4 @@ eval "$(read-command-into-array packages sh -c "grep -v '^#' \"$MACSTRAP_INSTALL
 if [[ ${#packages[@]} -gt 0 ]]; then
   pipx install "${packages[@]}"
 fi
+pipx ensurepath
