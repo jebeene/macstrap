@@ -1,0 +1,81 @@
+# Font
+font-family = "JetBrainsMono Nerd Font Mono"
+font-thicken=true
+font-size = 14
+font-style = Regular
+font-style-italic = Italic
+font-style-bold = Bold
+
+# Window size
+window-width = 135
+window-height = 35
+
+keybind = global:cmd+backquote=toggle_quick_terminal
+quick-terminal-position = center
+quick-terminal-size = 70%,700px
+quick-terminal-space-behavior = move
+quick-terminal-animation-duration = 0
+
+
+# Transparency and blur
+background-opacity = 0.7
+background-blur-radius = 22
+
+# Colors (your custom color scheme)
+background = #1e1e1e
+foreground = #dcdcdc
+
+# ANSI colors
+palette = 0=#141a1e
+palette = 1=#ff4545
+palette = 2=#66d959
+palette = 3=#d9d60b
+palette = 4=#277dc7
+palette = 5=#c03f7e
+palette = 6=#00c7c6
+palette = 7=#d6d8d9
+palette = 8=#868686
+palette = 9=#ff463e
+palette = 10=#7ef0aa
+palette = 11=#fff40b
+palette = 12=#a9fcff
+palette = 13=#e17de1
+palette = 14=#66e2e3
+palette = 15=#ffffff
+
+# Cursor
+cursor-color = #fffffe
+cursor-text = #000000
+cursor-style = block
+cursor-style-blink = true
+
+# Selection colors
+selection-background = #b3d7ff
+selection-foreground = #000000
+
+# Link color
+# link-decoration = #328fef
+
+# Terminal type
+term = xterm-256color
+
+# Scrollback
+scrollback-limit = 1000
+
+# Mouse
+mouse-hide-while-typing = true
+
+# Hotkey (Ghostty doesn't have global hotkeys like iTerm2)
+# You'll need to set this up via macOS keyboard shortcuts or a separate tool
+
+# Window appearance
+window-theme = dark
+window-decoration = true
+window-padding-x = 2
+window-padding-y = 2
+macos-titlebar-style = transparent
+macos-titlebar-proxy-icon = hidden
+
+
+# Misc
+shell-integration = detect

@@ -7,6 +7,7 @@ cursor
 docker-desktop
 dropbox
 gcloud-cli
+gh
 google-chrome
 granola
 iterm2
@@ -16,3 +17,4 @@ postico
 postman
 rectangle
 slack
+wispr-flow
