@@ -1,0 +1,30 @@
+{
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "model": "sonnet[1m]",
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "ai-team-shared@ai-team-marketplace": true
+  },
+  "extraKnownMarketplaces": {
+    "ai-team-marketplace": {
+      "source": {
+        "source": "directory",
+        "path": "/home/jbeene/alle/AI-Claude-Code-Plugin"
+      }
+    }
+  },
+  "theme": "dark-daltonized",
+  "editorMode": "vim",
+  "permissions": {
+    "allow": [
+      "Bash(git stash show *)",
+      "Bash(git -C * diff *)"
+    ]
+  }
+}
