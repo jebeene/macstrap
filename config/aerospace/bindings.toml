@@ -1,0 +1,17 @@
+# App launching — edit this file to customize your shortcuts
+# Reload after changes: run macstrap-refresh-aerospace
+#
+# Format:  alt-shift-{key} = 'exec-and-forget open -a "App Name"'
+# Reserved: h/j/k/l (focus), shift+h/j/k/l (move), 1-9 (workspaces),
+#           shift+1-9 (move to workspace), tab, semicolon
+
+    alt-shift-enter = 'exec-and-forget open -a "Ghostty"'
+    alt-shift-b     = 'exec-and-forget open -a "Google Chrome"'
+    alt-shift-n     = 'exec-and-forget open -a "Cursor"'
+    alt-shift-a     = 'exec-and-forget open -a "ChatGPT"'
+    alt-shift-o     = 'exec-and-forget open -a "Obsidian"'
+    alt-shift-s     = 'exec-and-forget open -a "Slack"'
+    alt-shift-d     = 'exec-and-forget open -a "Docker Desktop"'
+    alt-shift-p     = 'exec-and-forget open -a "Postman"'
+    alt-shift-g     = 'exec-and-forget open -a "Granola"'
+    alt-shift-slash = 'exec-and-forget open -a "1Password"'

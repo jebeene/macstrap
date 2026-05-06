@@ -1,0 +1,18 @@
+#!/bin/bash
+# Rebuild ~/.aerospace.toml from macstrap defaults + user bindings and reload AeroSpace
+
+set -euo pipefail
+
+MACSTRAP_PATH="${MACSTRAP_PATH:-$HOME/.local/share/macstrap}"
+BASE="$MACSTRAP_PATH/default/aerospace/aerospace.toml"
+USER_BINDINGS="$MACSTRAP_PATH/config/aerospace/bindings.toml"
+OUTPUT="$HOME/.aerospace.toml"
+
+python3 -c "
+base = open('$BASE').read()
+user = open('$USER_BINDINGS').read()
+print(base.replace('# __USER_BINDINGS__', user), end='')
+" > "$OUTPUT"
+
+aerospace reload-config
+echo "AeroSpace config reloaded."
