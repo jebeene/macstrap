@@ -1,6 +1,6 @@
-# AeroSpace system configuration — managed by macstrap
-# Do not edit directly; this file is overwritten on macstrap updates
-# To customize shortcuts: edit ~/.local/share/macstrap/config/aerospace/bindings.toml
+# AeroSpace system configuration — managed by macstrap (READ-ONLY)
+# Do not edit directly; rebuilt to ~/.config/aerospace/aerospace.toml by macstrap-refresh-aerospace
+# To customize shortcuts: edit ~/.config/macstrap/aerospace/bindings.toml
 
 after-startup-command = ['layout tiles']
 
@@ -26,6 +26,13 @@ automatically-unhide-macos-hidden-apps = false
     outer.bottom     = 0
     outer.top        = 0
     outer.right      = 0
+
+# ── macstrap popup ────────────────────────────────────────────────────────────
+# Float Ghostty windows launched by macstrap-popup (title set via --title=macstrap)
+[[on-window-detected]]
+if.app-name-regex-substring = 'Ghostty'
+if.window-title-regex-substring = '^macstrap$'
+run = ['layout floating']
 
 [mode.main.binding]
 
@@ -77,6 +84,9 @@ automatically-unhide-macos-hidden-apps = false
 
     # ── Service mode ────────────────────────────────────────────────────────
     alt-shift-semicolon = 'mode service'
+
+    # ── macstrap menu ──────────────────────────────────────────────────────────
+    alt-space = 'exec-and-forget $HOME/.local/share/macstrap/bin/macstrap-popup'
 
     # ── User bindings (from config/aerospace/bindings.toml) ────────────────
 # __USER_BINDINGS__

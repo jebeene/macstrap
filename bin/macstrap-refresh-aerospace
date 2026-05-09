@@ -1,12 +1,19 @@
 #!/bin/bash
-# Rebuild ~/.aerospace.toml from macstrap defaults + user bindings and reload AeroSpace
+# Rebuild ~/.config/aerospace/aerospace.toml from macstrap defaults + user bindings and reload AeroSpace
 
 set -euo pipefail
 
-MACSTRAP_PATH="${MACSTRAP_PATH:-$HOME/.local/share/macstrap}"
 BASE="$MACSTRAP_PATH/default/aerospace/aerospace.toml"
-USER_BINDINGS="$MACSTRAP_PATH/config/aerospace/bindings.toml"
-OUTPUT="$HOME/.aerospace.toml"
+USER_BINDINGS="$HOME/.config/macstrap/aerospace/bindings.toml"
+OUTPUT="$HOME/.config/aerospace/aerospace.toml"
+
+mkdir -p "$(dirname "$OUTPUT")"
+
+# Seed user bindings from macstrap default if not yet created
+if [[ ! -f "$USER_BINDINGS" ]]; then
+  mkdir -p "$(dirname "$USER_BINDINGS")"
+  cp "$MACSTRAP_PATH/config/aerospace/bindings.toml" "$USER_BINDINGS"
+fi
 
 python3 -c "
 base = open('$BASE').read()
