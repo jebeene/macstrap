@@ -1,0 +1,17 @@
+{
+  "name": "cursor-dark-anysphere",
+  "displayName": "Cursor Dark Anysphere",
+  "description": "Cursor Dark Anysphere color theme",
+  "version": "0.0.3",
+  "engines": { "vscode": "^1.60.0" },
+  "categories": ["Themes"],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Cursor Dark Anysphere",
+        "uiTheme": "vs-dark",
+        "path": "./cursor-dark-color-theme.json"
+      }
+    ]
+  }
+}
