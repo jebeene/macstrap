@@ -1,0 +1,15 @@
+#!/bin/bash
+# Overwrite ~/.config/tmux/tmux.conf with the macstrap default and reload tmux
+
+set -euo pipefail
+
+OUTPUT="$HOME/.config/tmux/tmux.conf"
+mkdir -p "$(dirname "$OUTPUT")"
+cp "$MACSTRAP_PATH/default/tmux/tmux.conf" "$OUTPUT"
+
+if pgrep -x tmux &>/dev/null; then
+  tmux source-file "$OUTPUT"
+  echo "tmux config reloaded."
+else
+  echo "tmux config written to $OUTPUT (tmux not running)"
+fi

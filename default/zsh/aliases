@@ -29,6 +29,9 @@ alias ....='cd ../../..'
 # Clear
 alias c='clear'
 
+# Tmux
+alias t='tmux attach || tmux new -s main'
+
 # Tools
 alias d='docker'
 alias r='rails'
