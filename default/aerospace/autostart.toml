@@ -1,0 +1,3 @@
+after-startup-command = ['layout tiles']
+
+start-at-login = true

@@ -1,0 +1,5 @@
+# Float Ghostty windows launched by macstrap-popup (title set via --title=macstrap)
+[[on-window-detected]]
+if.app-name-regex-substring = 'Ghostty'
+if.window-title-regex-substring = '^macstrap$'
+run = ['layout floating']

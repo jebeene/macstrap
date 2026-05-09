@@ -1,7 +1,8 @@
 # macstrap
 export MACSTRAP_PATH="$HOME/.local/share/macstrap"
 export PATH="$MACSTRAP_PATH/bin:$PATH"
+export EDITOR=nvim
 
-# Editor used by CLI
+# Editor
 export SUDO_EDITOR="$EDITOR"
 export BAT_THEME=ansi

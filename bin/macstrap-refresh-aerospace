@@ -3,7 +3,7 @@
 
 set -euo pipefail
 
-BASE="$MACSTRAP_PATH/default/aerospace/aerospace.toml"
+DEFAULTS="$MACSTRAP_PATH/default/aerospace"
 USER_BINDINGS="$HOME/.config/macstrap/aerospace/bindings.toml"
 OUTPUT="$HOME/.config/aerospace/aerospace.toml"
 
@@ -15,11 +15,41 @@ if [[ ! -f "$USER_BINDINGS" ]]; then
   cp "$MACSTRAP_PATH/config/aerospace/bindings.toml" "$USER_BINDINGS"
 fi
 
-python3 -c "
-base = open('$BASE').read()
-user = open('$USER_BINDINGS').read()
-print(base.replace('# __USER_BINDINGS__', user), end='')
-" > "$OUTPUT"
+{
+  # AeroSpace system configuration — managed by macstrap (READ-ONLY)
+  # Rebuilt from default/aerospace/ by macstrap-refresh-aerospace
+  # To customize shortcuts: edit ~/.config/macstrap/aerospace/bindings.toml
+
+  cat "$DEFAULTS/autostart.toml"
+  echo
+  cat "$DEFAULTS/input.toml"
+  echo
+  cat "$DEFAULTS/looknfeel.toml"
+  echo
+
+  # App-specific window rules — add files to default/aerospace/apps/ to extend
+  for f in "$DEFAULTS"/apps/*.toml; do
+    [[ -f "$f" ]] || continue
+    cat "$f"
+    echo
+  done
+
+  echo '[mode.main.binding]'
+  echo
+
+  # System WM bindings (bare key = value pairs, assembled in order)
+  for name in focus workspaces navigation; do
+    cat "$DEFAULTS/bindings/$name.toml"
+    echo
+  done
+
+  # User app-launcher bindings
+  cat "$USER_BINDINGS"
+  echo
+
+  # Service mode (owns its own section header)
+  cat "$DEFAULTS/bindings/service.toml"
+} > "$OUTPUT"
 
 aerospace reload-config
 echo "AeroSpace config reloaded."
