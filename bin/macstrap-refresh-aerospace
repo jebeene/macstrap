@@ -51,9 +51,7 @@ fi
   cat "$DEFAULTS/bindings/service.toml"
 } > "$OUTPUT"
 
-if ! aerospace reload-config 2>/dev/null; then
-  open -a AeroSpace
-  sleep 2
+if [[ "${1:-}" != "--no-reload" ]]; then
   aerospace reload-config
+  echo "AeroSpace config reloaded."
 fi
-echo "AeroSpace config reloaded."
