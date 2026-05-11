@@ -6,7 +6,9 @@ run_logged $MACSTRAP_INSTALL/config/macos/menubar.sh
 run_logged $MACSTRAP_INSTALL/config/macos/mouse.sh
 run_logged $MACSTRAP_INSTALL/config/macos/text.sh
 run_logged $MACSTRAP_INSTALL/config/macos/trackpad.sh
+run_logged $MACSTRAP_INSTALL/config/macos/dock.sh
 run_logged $MACSTRAP_INSTALL/config/macos/ui.sh
+run_logged $MACSTRAP_INSTALL/config/macos/hotcorners.sh
 
 killall Finder 2>/dev/null || true
 killall Dock 2>/dev/null || true
