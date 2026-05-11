@@ -10,19 +10,11 @@ fi
 
 echo "Setting up AeroSpace..."
 
-# Build ~/.config/aerospace/aerospace.toml from component defaults + user bindings (no reload yet)
-macstrap-refresh-aerospace --no-reload
-echo "AeroSpace config written to $HOME/.config/aerospace/aerospace.toml"
+# Build ~/.config/aerospace/aerospace.toml from component defaults + user bindings
+macstrap-refresh-aerospace
 
-# Launch AeroSpace — it will prompt for Accessibility permission on first run
-open -a AeroSpace
-
-echo ""
-echo "AeroSpace requires Accessibility permission to manage windows."
-echo "  → System Settings → Privacy & Security → Accessibility → enable AeroSpace"
-echo ""
-read -rp "Press Enter once you've granted Accessibility permission..."
-
-# Register AeroSpace to start at login and reload the config
+# Register AeroSpace to start at login
 aerospace enable login-item 2>/dev/null || true
-aerospace reload-config
+
+echo "AeroSpace config written to $HOME/.config/aerospace/aerospace.toml"
+echo "Grant Accessibility permission when prompted: System Settings → Privacy & Security → Accessibility"
