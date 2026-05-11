@@ -1,1 +1,9 @@
-/home/jacobbeene/.config/omarchy/current/theme/neovim.lua
+return {
+  { "loctvl842/monokai-pro.nvim" },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "monokai-pro",
+    },
+  },
+}
