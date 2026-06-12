@@ -5,6 +5,7 @@
 	br = branch
 	ci = commit
 	st = status
+  ss = log main..HEAD --stat
 [init]
 	defaultBranch = master
 [pull]
