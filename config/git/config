@@ -36,6 +36,22 @@
 	line-numbers = true
 	hyperlinks = true
 	side-by-side = true
+	wrap-max-lines = 0
+	zero-style = dim syntax
+	syntax-theme = "Monokai Extended"
+	merge-conflict-style = diff-3
+	word-diff-regex = "[^[:space:]]+"
+	file-style = bold "#e0e0e0" "#1e3a5f"
+	file-decoration-style = "#56b4e9" box
+	file-added-label = U
+	file-modified-label = M
+	file-removed-label = D
+	file-renamed-label = R
+	hunk-header-style = file line-number "#888888"
+	hunk-header-decoration-style = "#333333" ul
+	commit-style = bold "#e69f00"
+	commit-decoration-style = "#e69f00" box
+	blame-palette = "#1a1a2e" "#16213e" "#0f3460" "#1a2744" "#2d1b45"
 	# Okabe-Ito colorblind-safe palette: orange for removed, blue for added
 	minus-style                   = syntax "#3d1c00"
 	minus-emph-style              = syntax "#7a3800"
