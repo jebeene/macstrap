@@ -38,7 +38,7 @@
 	side-by-side = true
 	wrap-max-lines = 0
 	zero-style = dim syntax
-	syntax-theme = "Monokai Extended"
+	syntax-theme = CursorDarkAnysphere
 	merge-conflict-style = diff-3
 	word-diff-regex = "[^[:space:]]+"
 	file-style = bold "#e0e0e0" "#1e3a5f"
