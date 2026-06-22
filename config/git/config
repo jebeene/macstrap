@@ -1,5 +1,4 @@
 # See https://git-scm.com/docs/git-config
-
 [alias]
 	co = checkout
 	br = branch
@@ -27,3 +26,22 @@
 [rerere]
 	enabled = true           # Record and reuse conflict resolutions
 	autoupdate = true        # Apply stored conflict resolutions automatically
+[core]
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	true-color = always
+	line-numbers = true
+	hyperlinks = true
+	side-by-side = true
+	# Okabe-Ito colorblind-safe palette: orange for removed, blue for added
+	minus-style                   = syntax "#3d1c00"
+	minus-emph-style              = syntax "#7a3800"
+	minus-empty-line-marker-style = normal "#3d1c00"
+	plus-style                    = syntax "#00243d"
+	plus-emph-style               = syntax "#004880"
+	plus-empty-line-marker-style  = normal "#00243d"
+	line-numbers-minus-style      = "#e69f00"
+	line-numbers-plus-style       = "#56b4e9"
