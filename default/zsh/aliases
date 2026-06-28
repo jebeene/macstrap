@@ -37,6 +37,8 @@ alias d='docker'
 alias r='rails'
 n() { if [ "$#" -eq 0 ]; then nvim .; else nvim "$@"; fi; }
 
+alias python='/opt/homebrew/bin/python3'
+
 # Git
 alias g='git'
 alias gcm='git commit -m'
