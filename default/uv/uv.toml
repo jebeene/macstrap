@@ -1,0 +1,2 @@
+# Security: only resolve packages published at least 7 days ago
+exclude-newer = "7 days"

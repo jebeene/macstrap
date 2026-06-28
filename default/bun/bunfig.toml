@@ -1,0 +1,3 @@
+[install]
+# Security: only install packages published at least 7 days ago (604800 seconds)
+minimumReleaseAge = 604800

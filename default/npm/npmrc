@@ -1,0 +1,2 @@
+# Security: only install packages that have been published for at least 7 days
+min-release-age=7
