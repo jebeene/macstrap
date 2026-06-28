@@ -4,6 +4,26 @@ Features identified by comparing with [Omarchy](https://github.com/basecamp/omar
 
 ---
 
+## In Progress
+
+### `macstrap-refresh-config` primitive
+Omarchy has `omarchy-refresh-config <path>` which copies `~/.local/share/omarchy/config/<path>` → `~/.config/<path>`, backing up the destination with a timestamp and printing a diff if the file changed.
+
+macstrap should have the same: `macstrap-refresh-config <path>` copying from `$MACSTRAP_PATH/default/<path>` → `~/.config/<path>` with the same backup+diff behavior.
+
+**Done:**
+- Design finalized, omarchy source reviewed at `~/projects/omarchy/bin/omarchy-refresh-config`
+
+**To do:**
+- Create `bin/macstrap-refresh-config` (model on omarchy's version, sourcing from `$MACSTRAP_PATH/default/`)
+- Simplify `bin/macstrap-refresh-tmux` to call `macstrap-refresh-config tmux/tmux.conf` + reload tmux
+
+**Decided against:**
+- Simplifying `macstrap-refresh-aerospace` with this primitive — aerospace requires a single assembled `.toml` from multiple source files, so a single-file copy won't work. Omarchy avoids this because hyprland natively loads multiple config files. Leave aerospace as-is.
+- A `macstrap-build-aerospace` split — adds a file without omarchy precedent; inline assembly is fine.
+
+---
+
 ## High Priority
 
 ### Theme System
