@@ -6,15 +6,16 @@ font-style = Regular
 font-style-italic = Italic
 font-style-bold = Bold
 
-# Window size
-window-width = 135
-window-height = 35
+# Windows
+window-decoration = true
 
+# Quick terminal
 keybind = global:cmd+backquote=toggle_quick_terminal
 quick-terminal-position = center
-quick-terminal-size = 70%,700px
+quick-terminal-size = 100%,100%
 quick-terminal-space-behavior = move
 quick-terminal-animation-duration = 0
+quick-terminal-autohide = false
 
 
 # Transparency and blur
