@@ -1,0 +1,45 @@
+#!/bin/bash
+
+LOG_FILE="/tmp/macstrap-debug.log"
+
+cat > "$LOG_FILE" <<EOF
+Date: $(date)
+Hostname: $(hostname)
+macstrap version: $(cat "$MACSTRAP_PATH/version" 2>/dev/null || echo "unknown")
+macstrap branch: $(git -C "$MACSTRAP_PATH" branch --show-current 2>/dev/null || echo "unknown")
+
+=========================================
+SYSTEM
+=========================================
+$(sw_vers)
+$(uname -a)
+
+=========================================
+HOMEBREW
+=========================================
+$(brew config 2>&1)
+
+$(brew doctor 2>&1 || true)
+
+=========================================
+INSTALLED FORMULAE
+=========================================
+$(brew list --formula 2>/dev/null)
+
+=========================================
+INSTALLED CASKS
+=========================================
+$(brew list --cask 2>/dev/null)
+EOF
+
+ACTION=$(gum choose "View log" "Save to current directory")
+
+case "$ACTION" in
+  "View log")
+    less "$LOG_FILE"
+    ;;
+  "Save to current directory")
+    cp "$LOG_FILE" "./macstrap-debug.log"
+    echo "✓ Saved to $(pwd)/macstrap-debug.log"
+    ;;
+esac

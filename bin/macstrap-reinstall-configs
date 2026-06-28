@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e
+
+echo "Reseeding macstrap configs from defaults..."
+
+mkdir -p ~/.config
+cp -R "$MACSTRAP_PATH/config/"* ~/.config/
+
+[[ -f "$MACSTRAP_PATH/default/zshrc" ]] && cp "$MACSTRAP_PATH/default/zshrc" ~/.zshrc
+[[ -f "$MACSTRAP_PATH/default/zshenv" ]] && cp "$MACSTRAP_PATH/default/zshenv" ~/.zshenv
+[[ -f "$MACSTRAP_PATH/default/bunfig.toml" ]] && cp "$MACSTRAP_PATH/default/bunfig.toml" ~/.bunfig.toml
+
+echo "✓ Configs reset to macstrap defaults"

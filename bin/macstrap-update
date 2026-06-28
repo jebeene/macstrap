@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+echo -e "\e[32mUpdating macstrap\e[0m"
+git -C "$MACSTRAP_PATH" pull --autostash
+
+echo -e "\e[32mUpdating Homebrew packages\e[0m"
+brew upgrade
+
+macstrap-migrate
+macstrap-hook post-update
