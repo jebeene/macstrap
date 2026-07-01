@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# macstrap:summary=Copies the named config from $MACSTRAP_PATH/default/X/Y/Z -> ~/.config/X/Y/Z.
+# macstrap:args=<config-path>
+
+config_file=$1
+
+if [[ -z $config_file ]]; then
+  cat <<USAGE
+  Usage: $0 [config_file]
+
+  Must provide a file path from the .config directory to be refreshed.
+  To copy \$MACSTRAP_PATH/default/tmux/tmux.conf to ~/.config/tmux/tmux.conf
+
+    $0 tmux/tmux.conf
+USAGE
+  exit 1
+fi
+
+user_config_file="${HOME}/.config/$config_file"
+default_config_file="${MACSTRAP_PATH}/default/$config_file"
+backup_config_file="$user_config_file.bak.$(date +%s)"
+
+mkdir -p "$(dirname "$user_config_file")"
+
+if [[ -f $user_config_file ]]; then
+  cp -f "$user_config_file" "$backup_config_file" 2>/dev/null
+
+  cp -f "$default_config_file" "$user_config_file" 2>/dev/null
+
+  if cmp -s "$user_config_file" "$backup_config_file"; then
+    rm "$backup_config_file"
+  else
+    echo -e "\e[31mReplaced $user_config_file with new macstrap default.\nSaved backup as ${backup_config_file}.\n\n\e[32mChanges:\e[0m"
+    diff "$user_config_file" "$backup_config_file" || true
+  fi
+else
+  cp -f "$default_config_file" "$user_config_file" 2>/dev/null
+fi

@@ -4,26 +4,6 @@ Features identified by comparing with [Omarchy](https://github.com/basecamp/omar
 
 ---
 
-## In Progress
-
-### `macstrap-refresh-config` primitive
-Omarchy has `omarchy-refresh-config <path>` which copies `~/.local/share/omarchy/config/<path>` → `~/.config/<path>`, backing up the destination with a timestamp and printing a diff if the file changed.
-
-macstrap should have the same: `macstrap-refresh-config <path>` copying from `$MACSTRAP_PATH/default/<path>` → `~/.config/<path>` with the same backup+diff behavior.
-
-**Done:**
-- Design finalized, omarchy source reviewed at `~/projects/omarchy/bin/omarchy-refresh-config`
-
-**To do:**
-- Create `bin/macstrap-refresh-config` (model on omarchy's version, sourcing from `$MACSTRAP_PATH/default/`)
-- Simplify `bin/macstrap-refresh-tmux` to call `macstrap-refresh-config tmux/tmux.conf` + reload tmux
-
-**Decided against:**
-- Simplifying `macstrap-refresh-aerospace` with this primitive — aerospace requires a single assembled `.toml` from multiple source files, so a single-file copy won't work. Omarchy avoids this because hyprland natively loads multiple config files. Leave aerospace as-is.
-- A `macstrap-build-aerospace` split — adds a file without omarchy precedent; inline assembly is fine.
-
----
-
 ## High Priority
 
 ### Theme System
@@ -40,13 +20,11 @@ Omarchy has 19 full themes with a template engine that applies color palettes pe
 - Populate with initial migrations for any breaking config changes going forward
 
 ### More `bin/` Commands
-Omarchy has 290+ commands vs macstrap's 7.
-- `macstrap-update` — pull latest, run migrations, update Homebrew packages
+Omarchy has 290+ commands vs macstrap's ~12.
 - `macstrap-capture-screenshot` — selection, window, full (wraps macOS `screencapture`)
 - `macstrap-capture-color` — color picker via Digital Color Meter CLI
 - `macstrap-toggle-dark` / `macstrap-toggle-light` — standalone scripts (currently only in menu)
 - `macstrap-restart-aerospace` — reload AeroSpace without full refresh
-- `macstrap-version` — print current macstrap version
 
 ### First-Run Mode
 Separate post-install wizard for steps that can't run headlessly or need one-time interactive setup.
@@ -103,11 +81,6 @@ Omarchy supports stable/rc/dev channels with a `omarchy-update-branch` command.
 ### `applications/` Folder
 Omarchy uses this for desktop integration metadata (`.desktop` files, app associations).
 - macOS equivalent: app-specific post-install notes, keybinding docs, default handler config
-
-### `version` File
-Needed for migration infrastructure — track the installed macstrap version.
-- Simple semver or date-based version string
-- Referenced by `macstrap-version` and migration runner
 
 ### Developer Tooling
 - `macstrap-dev-benchmark` — measure install time phase by phase
