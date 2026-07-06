@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# macstrap:summary=Re-apply the current theme (useful after macstrap update)
+# macstrap:examples=macstrap theme refresh
+
+THEME_NAME_PATH="$HOME/.config/macstrap/current/theme.name"
+
+if [[ ! -f $THEME_NAME_PATH ]]; then
+  echo "No theme currently set"
+  exit 1
+fi
+
+macstrap-theme-set "$(cat "$THEME_NAME_PATH")"

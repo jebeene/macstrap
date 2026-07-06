@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# macstrap:summary=List available themes
+# macstrap:examples=macstrap theme list
+
+MACSTRAP_THEMES="$MACSTRAP_PATH/themes"
+USER_THEMES="$HOME/.config/macstrap/themes"
+
+seen=()
+
+if [[ -d $MACSTRAP_THEMES ]]; then
+  while IFS= read -r dir; do
+    name=$(basename "$dir")
+    seen+=("$name")
+    echo "$name"
+  done < <(find "$MACSTRAP_THEMES" -mindepth 1 -maxdepth 1 -type d | sort)
+fi
+
+if [[ -d $USER_THEMES ]]; then
+  while IFS= read -r dir; do
+    name=$(basename "$dir")
+    if [[ ! " ${seen[*]} " =~ " $name " ]]; then
+      echo "$name (custom)"
+    fi
+  done < <(find "$USER_THEMES" -mindepth 1 -maxdepth 1 -type d | sort)
+fi

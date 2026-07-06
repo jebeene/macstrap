@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# macstrap:summary=Show the currently active theme
+# macstrap:examples=macstrap theme current
+
+THEME_NAME_PATH="$HOME/.config/macstrap/current/theme.name"
+
+if [[ -f $THEME_NAME_PATH ]]; then
+  cat "$THEME_NAME_PATH"
+else
+  echo "Unknown"
+fi
