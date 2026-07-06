@@ -18,7 +18,7 @@ USAGE
 fi
 
 user_config_file="${HOME}/.config/$config_file"
-default_config_file="${MACSTRAP_PATH}/default/$config_file"
+default_config_file="${MACSTRAP_PATH}/config/$config_file"
 backup_config_file="$user_config_file.bak.$(date +%s)"
 
 mkdir -p "$(dirname "$user_config_file")"
