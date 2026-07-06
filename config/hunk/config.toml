@@ -1,0 +1,57 @@
+theme = "custom"
+mode = "auto"
+vcs = "git"
+watch = false
+exclude_untracked = false
+line_numbers = true
+wrap_lines = false
+menu_bar = true
+agent_notes = true
+transparent_background = false
+
+[custom_theme]
+base = "github-dark-default"
+label = "Monokai Pro"
+background = "#2D2A2E"
+panel = "#2D2A2E"
+panelAlt = "#373438"
+border = "#403E41"
+accent = "#78DCE8"
+accentMuted = "#434044"
+text = "#FCFCFA"
+muted = "#939293"
+addedBg = "#3C3F37"
+removedBg = "#463139"
+movedAddedBg = "#3C3F37"
+movedRemovedBg = "#463139"
+contextBg = "#2D2A2E"
+addedContentBg = "#3C3F37"
+removedContentBg = "#463139"
+contextContentBg = "#2D2A2E"
+addedSignColor = "#A9DC76"
+removedSignColor = "#FF6188"
+lineNumberBg = "#2D2A2E"
+lineNumberFg = "#5B595C"
+selectedHunk = "#373438"
+badgeAdded = "#A9DC76"
+badgeRemoved = "#FF6188"
+badgeNeutral = "#FC9867"
+fileNew = "#A9DC76"
+fileDeleted = "#FF6188"
+fileRenamed = "#78DCE8"
+fileModified = "#FFD866"
+fileUntracked = "#939293"
+noteBorder = "#AB9DF2"
+noteBackground = "#2D2A2E"
+noteTitleBackground = "#373438"
+noteTitleText = "#FCFCFA"
+
+[custom_theme.syntax]
+keyword = "#FF6188"
+string = "#FFD866"
+comment = "#727072"
+operator = "#FF6188"
+variable = "#FCFCFA"
+function = "#A9DC76"
+type = "#FCFCFA"
+number = "#AB9DF2"
