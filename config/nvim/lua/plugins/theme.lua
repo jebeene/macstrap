@@ -1,9 +1,5 @@
-return {
-  { "loctvl842/monokai-pro.nvim" },
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "monokai-pro",
-    },
-  },
-}
+local theme_file = vim.fn.expand("~/.config/macstrap/current/theme/neovim.lua")
+if vim.fn.filereadable(theme_file) == 1 then
+  return dofile(theme_file)
+end
+return {}
