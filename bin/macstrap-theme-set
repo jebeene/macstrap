@@ -39,10 +39,11 @@ mv "$NEXT_THEME_PATH" "$CURRENT_THEME_PATH"
 # Store theme name for reference
 echo "$THEME_NAME" >"$HOME/.config/macstrap/current/theme.name"
 
-# Reload apps
-macstrap-restart-ghostty
-macstrap-restart-tmux
-macstrap-theme-set-nvim
+# Reload apps in parallel
+macstrap-restart-ghostty &
+macstrap-restart-tmux &
+macstrap-theme-set-nvim &
+wait
 
 # Call hook on theme set
 macstrap-hook theme-set "$THEME_NAME" >/dev/null
