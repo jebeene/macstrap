@@ -42,6 +42,7 @@ echo "$THEME_NAME" >"$HOME/.config/macstrap/current/theme.name"
 # Reload apps
 macstrap-restart-ghostty
 macstrap-restart-tmux
+macstrap-theme-set-nvim
 
 # Call hook on theme set
 macstrap-hook theme-set "$THEME_NAME" >/dev/null

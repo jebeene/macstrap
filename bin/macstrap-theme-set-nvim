@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# macstrap:summary=Apply the current theme to running nvim instances
+# macstrap:hidden=true
+
+NVIM_THEME_PLUGIN="$HOME/.config/nvim/lua/plugins/theme.lua"
+
+[[ -f $NVIM_THEME_PLUGIN ]] || exit 0
+
+# Touch theme.lua to trigger lazy.nvim's file watcher and fire LazyReload
+touch "$NVIM_THEME_PLUGIN"
