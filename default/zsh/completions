@@ -1,0 +1,8 @@
+# macstrap zsh completions
+
+_macstrap_theme_set() {
+  local themes
+  themes=(${(f)"$(macstrap-theme-list 2>/dev/null)"})
+  _describe 'theme' themes
+}
+compdef _macstrap_theme_set macstrap-theme-set
