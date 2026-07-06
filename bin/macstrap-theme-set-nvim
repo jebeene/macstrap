@@ -4,8 +4,11 @@
 # macstrap:hidden=true
 
 NVIM_THEME_PLUGIN="$HOME/.config/nvim/lua/plugins/theme.lua"
+CURRENT_NEOVIM_THEME="$HOME/.config/macstrap/current/theme/neovim.lua"
 
+[[ -f $CURRENT_NEOVIM_THEME ]] || exit 0
 [[ -f $NVIM_THEME_PLUGIN ]] || exit 0
 
-# Touch theme.lua to trigger lazy.nvim's file watcher and fire LazyReload
-touch "$NVIM_THEME_PLUGIN"
+# Overwrite theme.lua in-place so kqueue fires NOTE_WRITE immediately,
+# triggering lazy.nvim's file watcher without polling delay.
+cp "$CURRENT_NEOVIM_THEME" "$NVIM_THEME_PLUGIN"
