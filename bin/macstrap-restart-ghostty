@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# macstrap:summary=Reload Ghostty configuration without restarting
+
+if pgrep -x ghostty &>/dev/null; then
+  osascript -e 'tell application "System Events" to tell process "ghostty" to click menu item "Reload Configuration" of menu "Ghostty" of menu bar 1' &>/dev/null 2>&1 || true
+fi

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# macstrap:summary=Overwrite the user ghostty config with the macstrap default and reload Ghostty.
+
+macstrap-refresh-config ghostty/config
+
+if pgrep -x ghostty &>/dev/null; then
+  if osascript -e 'tell application "System Events" to tell process "ghostty" to click menu item "Reload Configuration" of menu "Ghostty" of menu bar 1' &>/dev/null 2>&1; then
+    echo "Ghostty config reloaded."
+  else
+    echo "Ghostty config written. Reload via: Ghostty menu > Reload Configuration (or cmd+shift+,)"
+  fi
+else
+  echo "Ghostty config written (Ghostty not running)."
+fi
