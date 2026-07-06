@@ -19,11 +19,12 @@ quick-terminal-autohide = false
 
 
 # Transparency and blur
-background-opacity = 0.7
+background-opacity = 0.8
+background-opacity-cells = true
 background-blur-radius = 22
 
 # Colors (your custom color scheme)
-background = #1e1e1e
+background = #181818
 foreground = #dcdcdc
 
 # ANSI colors
