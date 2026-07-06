@@ -3,10 +3,4 @@
 # macstrap:summary=Overwrite the user tmux config with the macstrap default and reload tmux.
 
 macstrap-refresh-config tmux/tmux.conf
-
-if pgrep -x tmux &>/dev/null; then
-  tmux source-file "${HOME}/.config/tmux/tmux.conf"
-  echo "tmux config reloaded."
-else
-  echo "tmux config written (tmux not running)"
-fi
+macstrap-restart-tmux
