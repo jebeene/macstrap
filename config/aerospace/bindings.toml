@@ -5,7 +5,7 @@
 # Reserved: h/j/k/l (focus), shift+h/j/k/l (move), 1-9 (workspaces),
 #           shift+1-9 (move to workspace), tab, semicolon
 
-    alt-shift-enter = 'exec-and-forget open -a "Ghostty"'
+    alt-shift-t     = 'exec-and-forget open -a "Ghostty"'
     alt-shift-b     = 'exec-and-forget open -a "Google Chrome"'
     alt-shift-n     = 'exec-and-forget open -a "Cursor"'
     alt-shift-a     = 'exec-and-forget open -a "ChatGPT"'
