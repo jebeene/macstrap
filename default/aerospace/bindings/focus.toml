@@ -16,4 +16,3 @@
 
     # ── Layout ─────────────────────────────────────────────────────────────
     alt-slash = 'layout tiles horizontal vertical'
-    alt-comma = 'layout accordion horizontal vertical'
