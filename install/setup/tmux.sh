@@ -12,6 +12,6 @@ echo "Setting up tmux..."
 
 OUTPUT="$HOME/.config/tmux/tmux.conf"
 mkdir -p "$(dirname "$OUTPUT")"
-cp "$MACSTRAP_PATH/default/tmux/tmux.conf" "$OUTPUT"
+cp "$MACSTRAP_PATH/config/tmux/tmux.conf" "$OUTPUT"
 
 echo "tmux config written to $OUTPUT"
