@@ -17,7 +17,7 @@ vim.keymap.set("n", "<LeftMouse>", function()
     return
   end
   vim.api.nvim_set_current_win(winid)
-  pcall(vim.api.nvim_win_set_cursor, winid, { mouse.line, 0 })
+  pcall(vim.api.nvim_win_set_cursor, winid, { mouse.line, math.max(0, mouse.column - 1) })
 
   local state = require("neo-tree.sources.manager").get_state_for_window(winid)
   if state and state.commands and state.commands["open"] then
